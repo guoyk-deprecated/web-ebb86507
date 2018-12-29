@@ -1,6 +1,6 @@
 <template>
     <b-card class="border-info">
-        <b class="card-title"><v-icon name="money-bill"></v-icon> Donation</b>
+        <b class="card-title"><v-icon name="money-bill" scale="1.4"></v-icon> Donation</b>
         <hr/>
         <div class="card-text">
             <p class="mb-0">

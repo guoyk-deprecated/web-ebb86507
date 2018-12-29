@@ -5,7 +5,7 @@
         <b-col md="8" class="mt-2">
             <b-card class="border-secondary">
                 <b class="card-title">
-                    <v-icon name="comments"></v-icon> Lorem Ipsum
+                    <v-icon name="comments" scale="1.4"></v-icon> Lorem Ipsum
                 </b>
                 <hr/>
                 <p class="card-text">
