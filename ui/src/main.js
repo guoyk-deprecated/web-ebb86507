@@ -11,14 +11,8 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(VueRouter)
 
-import 'vue-awesome/icons/lock'
-import 'vue-awesome/icons/envelope'
-import 'vue-awesome/icons/play-circle'
-import 'vue-awesome/icons/brands/weibo'
-import 'vue-awesome/icons/brands/twitter'
-import 'vue-awesome/icons/brands/instagram'
-import 'vue-awesome/icons/brands/github'
-import 'vue-awesome/icons/brands/steam-square'
+import './icons'
+
 import Icon from 'vue-awesome/components/Icon'
 
 Vue.component('v-icon', Icon)
