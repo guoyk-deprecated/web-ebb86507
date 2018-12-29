@@ -67,6 +67,14 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:7703efd1ae7d876a67f41e0e19632e5a9b0b2e885c72894ae88cfe54b8998c20"
+  name = "github.com/virtcanhead/health"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "6477d10a8ec18bc0ad8657617648c4b88786326f"
+
+[[projects]]
+  branch = "master"
   digest = "1:e3d2db9bc633f4635e6418caf0b0734c43821ecd59105d1798458c6ae4d227fd"
   name = "golang.org/x/crypto"
   packages = [
@@ -90,6 +98,7 @@
   input-imports = [
     "github.com/labstack/echo",
     "github.com/labstack/echo/middleware",
+    "github.com/virtcanhead/health",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
