@@ -7,7 +7,9 @@ set -u
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o web
 
 # build Vue
-cd ui && npm run build
+pushd ui 
+npm run build
+popd
 
 # build docker image
 docker build -t canhead/web .
