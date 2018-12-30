@@ -42,8 +42,7 @@ export default {
                 {icon: "brands/steam-square", url: "https://steamcommunity.com/id/virtcanhead"},
             ]
         }
-    },
-    name: 'ch-intro'
+    }
 }
 </script>
 

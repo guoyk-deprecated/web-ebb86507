@@ -17,6 +17,10 @@ import Icon from 'vue-awesome/components/Icon'
 
 Vue.component('v-icon', Icon)
 
+import VueResource from 'vue-resource'
+
+Vue.use(VueResource)
+
 import router from './router'
 
 new Vue({
