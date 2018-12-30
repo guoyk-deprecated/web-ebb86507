@@ -12,7 +12,7 @@ func routes(e *echo.Echo) {
 
 func routeSponsors(c echo.Context) (err error) {
 	var sponsors []Sponsor
-	if err = DB.Find(&sponsors).Error; err != nil {
+	if err = DB.Order("id DESC").Limit(500).Find(&sponsors).Error; err != nil {
 		return
 	}
 	return c.JSON(http.StatusOK, sponsors)
