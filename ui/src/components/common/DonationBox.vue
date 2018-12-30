@@ -12,14 +12,14 @@
             <p class="mb-0">
                 <b>JPY / USD</b> <small class="text-muted"> (buymeacoffee.com)</small>
             </p>
-            <p class="text-center mt-3 mb-0">
+            <p class="text-center mt-3">
                 <ch-bmcbutton></ch-bmcbutton>
             </p>
-            <p class="mb-0">
+            <p>
                 <b>Thanks</b>
             </p>
             <p v-if="sponsors.length > 0" class="mb-0">
-                <span v-for="sponsor in sponsors" :key="sponsor.name">{{ sponsor.name }}</span>
+                <span class="text-info sponsor" v-for="sponsor in sponsors" :key="sponsor.ID"><b><v-icon name="user" scale="0.8"></v-icon>&nbsp;{{ sponsor.Name }}</b></span>
             </p>
             <p v-if="sponsors.length == 0" class="mt-1 mb-1 text-center text-muted">
                 no supporters yet
@@ -39,11 +39,24 @@
         },
         components: {
             'ch-bmcbutton': BMCButton
+        },
+        created () {
+            this.updateSponsors()
+        },
+        methods: {
+            updateSponsors () {
+                this.$http.get("/api/sponsors").then(res=> {
+                    this.sponsors = res.body
+                }, () => {
+                    this.sponsors = [{ID: 1, Name: "FAILED TO LOAD"}]
+                })
+            }
         }
     }
 </script>
 
 <style>
 span.sponsor {
+    margin-right: 0.8rem;
 }
 </style>
