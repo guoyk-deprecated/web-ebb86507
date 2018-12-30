@@ -51,7 +51,14 @@ div.main-jumbotron {
     background-color: #333333;
     background-image: url("/img/jumbotron-bg.jpg");
 }
+
 a.intro-link {
     margin-right: 0.8rem;
+}
+
+@media (max-width: 576px) {
+    a.intro-link {
+        margin-right: 0.4rem;
+    }
 }
 </style>
