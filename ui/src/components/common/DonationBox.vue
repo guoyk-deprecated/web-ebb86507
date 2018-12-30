@@ -21,8 +21,11 @@
             <p v-if="sponsors.length > 0" class="mb-0">
                 <span class="text-info sponsor" v-for="sponsor in sponsors" :key="sponsor.ID"><b><v-icon name="user" scale="0.8"></v-icon>&nbsp;{{ sponsor.Name }}</b></span>
             </p>
-            <p v-if="sponsors.length == 0" class="mt-1 mb-1 text-center text-muted">
+            <p v-if="sponsors.length == 0 && loaded" class="mt-1 mb-1 text-center text-muted">
                 no supporters yet
+            </p>
+            <p v-if="sponsors.length == 0 && !loaded" class="mt-1 mb-1 text-center text-muted">
+                loading...
             </p>
         </div>
     </b-card>
@@ -34,6 +37,7 @@
     export default {
         data () {
             return {
+                loaded: false,
                 sponsors: []
             }
         },
@@ -47,8 +51,7 @@
             updateSponsors () {
                 this.$http.get("/api/sponsors").then(res=> {
                     this.sponsors = res.body
-                }, () => {
-                    this.sponsors = [{ID: 1, Name: "FAILED TO LOAD"}]
+                    this.loaded = true
                 })
             }
         }
