@@ -8,6 +8,9 @@ var (
 
 	// DatabaseDSN database dsn
 	DatabaseDSN = os.Getenv("DATABASE_DSN")
+
+	// AdminToken admin token
+	AdminToken = os.Getenv("ADMIN_TOKEN")
 )
 
 func init() {

@@ -1,3 +1,4 @@
+import 'vue-awesome/icons/award'
 import 'vue-awesome/icons/angle-right'
 import 'vue-awesome/icons/envelope'
 import 'vue-awesome/icons/comments'
