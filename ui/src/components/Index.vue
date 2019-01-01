@@ -55,6 +55,7 @@ export default {
         }
     },
     created () {
+        this.$ga.page('/')
         this.updatePosts()
     },
     components: {

@@ -21,6 +21,12 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource)
 
+import VueAnalytics from 'vue-analytics'
+
+Vue.use(VueAnalytics, {
+  id: 'UA-131537778-1'
+})
+
 import router from './router'
 
 new Vue({
