@@ -33,6 +33,25 @@
             </b-card>
         </b-col>
         <b-col md="4">
+            <b-card header="Add Post">
+                <b-form @submit.prevent="submitAddPostForm">
+                    <b-form-group label="Content:">
+                        <b-form-textarea
+                        v-model="addPostForm.content"
+                        placeholder="Enter Content">
+                        </b-form-textarea>
+                    </b-form-group>
+                    <b-form-group label="Image URL:">
+                        <b-form-input
+                        type="text"
+                        v-model="addPostForm.imageUrl"
+                        placeholder="Enter Image URL">
+                        </b-form-input>
+                    </b-form-group>
+                    <b-button type="submit" variant="primary">Submit</b-button>
+                    <b-form-text>{{addPostForm.status}}</b-form-text>
+                </b-form>
+            </b-card>
         </b-col>
         <b-col md="4">
         </b-col>
@@ -56,6 +75,11 @@ export default {
             addSponsorForm: {
                 name: '',
                 status: '',
+            },
+            addPostForm: {
+                content: '',
+                imageUrl: '',
+                status: ''
             }
         }
     },
@@ -81,7 +105,25 @@ export default {
                 }, (res) => {
                     this.addSponsorForm.status = "error: " + res.bodyText
                 })
+        },
+        submitAddPostForm () {
+            this.addPostForm.status = ''
+            this.$http.post(
+                '/api/posts/add', { 
+                    content: this.addPostForm.content,
+                    imageUrl: this.addPostForm.imageUrl
+                }, {
+                    headers: {
+                        'X-Admin-Token': this.adminToken
+                    }
+                }).then((res) => {
+                    localStorage.setItem('admin-token', this.adminToken)
+                    this.addPostForm.status = "success: " + res.bodyText
+                }, (res) => {
+                    this.addPostForm.status = "error: " + res.bodyText
+                })
         }
+
     }
 }
 </script>

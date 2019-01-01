@@ -10,6 +10,7 @@ func routes(e *echo.Echo) {
 	e.GET("/api/sponsors", routeSponsors)
 	e.GET("/api/posts", routePosts)
 	e.POST("/api/sponsors/add", routeAddSponsor, adminTokenValidator())
+	e.POST("/api/posts/add", routeAddPost, adminTokenValidator())
 }
 
 func adminTokenValidator() echo.MiddlewareFunc {
@@ -64,4 +65,21 @@ func routePosts(c echo.Context) (err error) {
 		return
 	}
 	return c.JSON(http.StatusOK, posts)
+}
+
+// AddPostForm add sponsor form
+type AddPostForm struct {
+	Content  string `json:"content"`
+	ImageURL string `json:"imageUrl"`
+}
+
+func routeAddPost(c echo.Context) (err error) {
+	form := new(AddPostForm)
+	if err = c.Bind(form); err != nil {
+		return
+	}
+	if err = DB.Create(&Post{Content: form.Content, ImageURL: form.ImageURL}).Error; err != nil {
+		return
+	}
+	return c.String(http.StatusOK, "OK")
 }
