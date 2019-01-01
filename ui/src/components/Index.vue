@@ -43,6 +43,7 @@
 <script>
 import IntroBox from './common/IntroBox.vue'
 import DonationBox from './common/DonationBox.vue'
+import moment from 'moment'
 
 export default {
     name: 'index',
@@ -68,11 +69,13 @@ export default {
             }
             this.loading = true
             this.$http.get("/api/posts", { params }).then((res) => {
-                this.posts = this.posts.concat(res.body)
-                this.posts.forEach(post => {
+                let newPosts = res.body
+                newPosts.forEach(post => {
+                    post.CreatedAt = moment(post.CreatedAt).local().calendar()
                     post.Col = post.ImageURL ? 6 : 12
                 })
-                this.hasMore = res.body.length == 50
+                this.posts = this.posts.concat(newPosts)
+                this.hasMore = newPosts.length == 50
                 this.loading = false
             }, () => {
                 this.loading = false
