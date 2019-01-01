@@ -3,16 +3,30 @@
     <ch-intro></ch-intro>
     <b-row>
         <b-col md="8" class="mt-2">
-            <b-card border-variant="light" header-bg-variant="light">
-                <b class="card-title">
-                    <v-icon name="comments" scale="1.4"></v-icon> Lorem Ipsum
-                </b>
-                <hr/>
-                <p class="card-text">
-                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis fermentum ullamcorper. Donec porttitor urna in orci volutpat, non euismod leo placerat. Morbi semper quam et massa lobortis euismod. Aenean pellentesque risus et gravida lobortis. Nam feugiat nisl ac neque volutpat, in dapibus leo tincidunt. In tincidunt ligula urna, lobortis dignissim lorem mattis sagittis. Donec ac sapien auctor metus semper cursus. Maecenas ut nibh ac erat tincidunt sodales sed vel mi.
-                 Mauris ut lectus ut magna placerat pretium ut nec libero. Nunc vitae lobortis massa. Vestibulum non velit viverra, fermentum enim et, auctor lacus. Sed euismod nisi metus, id tincidunt mauris euismod sit amet.
-                </p>
-            </b-card>
+            <b-row>
+                <b-col class="mb-3" v-for="post in posts" :key="post.ID" :md="post.Col">
+                    <b-card border-variant="light" header-bg-variant="light" :img-src="post.ImageURL">
+                        <p v-if="post.Content.length > 0">{{post.Content}}</p>
+                        <p class="card-text text-muted">
+                            <b>{{post.CreatedAt}}</b>
+                        </p>
+                    </b-card>
+                </b-col>
+                <b-col v-if="loading" md="12">
+                    <b-card border-variant="light" header-bg-variant="light">
+                        <p class="card-text text-muted">
+                            <b>loading...</b>
+                        </p>
+                    </b-card>
+                </b-col>
+                <b-col class="load-more-card" v-if="hasMore && !loading" md="12">
+                    <b-card @click="updatePosts" border-variant="light" header-bg-variant="light">
+                        <p class="card-text">
+                            <b>load more</b>
+                        </p>
+                    </b-card>
+                </b-col>
+            </b-row>
         </b-col>
         <b-col md="4" class="mt-2">
             <ch-donation></ch-donation>
@@ -32,12 +46,44 @@ import DonationBox from './common/DonationBox.vue'
 
 export default {
     name: 'index',
+    data () {
+        return {
+            loading: false,
+            hasMore: false,
+            posts: []
+        }
+    },
+    created () {
+        this.updatePosts()
+    },
     components: {
         'ch-intro': IntroBox,
         'ch-donation': DonationBox
+    },
+    methods: {
+        updatePosts () {
+            var params = {}
+            if (this.posts.length > 0) {
+                params.lastId = this.posts[this.posts.length - 1].ID
+            }
+            this.loading = true
+            this.$http.get("/api/posts", { params }).then((res) => {
+                this.posts = this.posts.concat(res.body)
+                this.posts.forEach(post => {
+                    post.Col = post.ImageURL ? 6 : 12
+                })
+                this.hasMore = res.body.length == 50
+                this.loading = false
+            }, () => {
+                this.loading = false
+            })
+        }
     }
 }
 </script>
 
 <style>
+.load-more-card {
+    cursor: pointer;
+}
 </style>

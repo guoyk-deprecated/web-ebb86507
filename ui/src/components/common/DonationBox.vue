@@ -8,7 +8,7 @@
                 <b><v-icon name="yen-sign"></v-icon> RMB</b> <small class="text-muted"> (wechat)</small>
             </p>
             <p class="text-center">
-                <img class="rounded" src="/img/wx-donate-slice.jpg" style="width: 160px"/>
+                <img class="rounded" src="../../assets/wx-donate-slice.jpg" style="width: 160px"/>
             </p>
             <p class="mb-1">
                 <b><v-icon name="dollar-sign"></v-icon> USD</b> <small class="text-muted"> (buymeacoffee.com)</small>

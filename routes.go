@@ -8,6 +8,7 @@ import (
 
 func routes(e *echo.Echo) {
 	e.GET("/api/sponsors", routeSponsors)
+	e.GET("/api/posts", routePosts)
 	e.POST("/api/sponsors/add", routeAddSponsor, adminTokenValidator())
 }
 
@@ -51,4 +52,16 @@ func routeAddSponsor(c echo.Context) (err error) {
 		return
 	}
 	return c.String(http.StatusOK, "OK")
+}
+
+func routePosts(c echo.Context) (err error) {
+	var posts []Post
+	var db = DB
+	if len(c.QueryParam("lastId")) > 0 {
+		db = db.Where("id < ?", c.QueryParam("lastId"))
+	}
+	if err = db.Order("id DESC").Limit(50).Find(&posts).Error; err != nil {
+		return
+	}
+	return c.JSON(http.StatusOK, posts)
 }

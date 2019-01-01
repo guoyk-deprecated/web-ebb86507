@@ -10,3 +10,11 @@ type Sponsor struct {
 
 	Name string `gorm:"NOT NULL;INDEX"`
 }
+
+// Post post
+type Post struct {
+	gorm.Model
+
+	ImageURL string `gorm:"NOT NULL"`
+	Content  string `gorm:"NOT NULL"`
+}

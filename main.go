@@ -26,7 +26,7 @@ func main() {
 		panic(err)
 	}
 
-	if err = DB.AutoMigrate(&Sponsor{}).Error; err != nil {
+	if err = DB.AutoMigrate(&Sponsor{}, &Post{}).Error; err != nil {
 		panic(err)
 	}
 

@@ -2,7 +2,7 @@
     <b-jumbotron class="main-jumbotron mt-4">
         <b-row>
             <b-col md="4" class="pt-3 text-right">
-                <img class="rounded-circle border border-secondary" src="/img/avatar-round-2.png" style="width: 160px; height: 160px;">
+                <img class="rounded-circle border border-secondary" src="../../assets/avatar-round-2.png" style="width: 160px; height: 160px;">
             </b-col>
             <b-col md="8" class="pt-4">
                 <b-row>
@@ -49,7 +49,7 @@ export default {
 <style>
 div.main-jumbotron {
     background-color: #333333;
-    background-image: url("/img/jumbotron-bg.jpg");
+    background-image: url("../../assets/jumbotron-bg.jpg");
 }
 
 a.intro-link {
