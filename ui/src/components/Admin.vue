@@ -41,12 +41,11 @@
                         placeholder="Enter Content">
                         </b-form-textarea>
                     </b-form-group>
-                    <b-form-group label="Image URL:">
-                        <b-form-input
-                        type="text"
+                    <b-form-group label="Image URLs:">
+                        <b-form-textarea
                         v-model="addPostForm.imageUrl"
-                        placeholder="Enter Image URL">
-                        </b-form-input>
+                        placeholder="Enter Image URLs">
+                        </b-form-textarea>
                     </b-form-group>
                     <b-button type="submit" variant="primary">Submit</b-button>
                     <b-form-text>{{addPostForm.status}}</b-form-text>

@@ -75,7 +75,7 @@ export default {
             this.$http.get("/api/posts", { params }).then((res) => {
                 let newPosts = res.body
                 newPosts.forEach(post => {
-                    post.ImageURLs = post.ImageURL.split('|||')
+                    post.ImageURLs = post.ImageURL.split('\n')
                     post.CreatedAt = moment(post.CreatedAt).local().calendar()
                 })
                 this.posts = this.posts.concat(newPosts)
