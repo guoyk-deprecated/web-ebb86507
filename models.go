@@ -17,4 +17,5 @@ type Post struct {
 
 	ImageURL string `gorm:"NOT NULL"`
 	Content  string `gorm:"NOT NULL"`
+	Link     string `gorm:"NOT NULL"`
 }

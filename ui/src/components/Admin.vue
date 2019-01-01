@@ -47,6 +47,13 @@
                         placeholder="Enter Image URLs">
                         </b-form-textarea>
                     </b-form-group>
+                    <b-form-group label="Link:">
+                        <b-form-input
+                        type="text"
+                        v-model="addPostForm.link"
+                        placeholder="Enter Link">
+                        </b-form-input>
+                    </b-form-group>
                     <b-button type="submit" variant="primary">Submit</b-button>
                     <b-form-text>{{addPostForm.status}}</b-form-text>
                 </b-form>
@@ -78,6 +85,7 @@ export default {
             addPostForm: {
                 content: '',
                 imageUrl: '',
+                link: '',
                 status: ''
             }
         }
@@ -110,7 +118,8 @@ export default {
             this.$http.post(
                 '/api/posts/add', { 
                     content: this.addPostForm.content,
-                    imageUrl: this.addPostForm.imageUrl
+                    imageUrl: this.addPostForm.imageUrl,
+                    link: this.addPostForm.link
                 }, {
                     headers: {
                         'X-Admin-Token': this.adminToken

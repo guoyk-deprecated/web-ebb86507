@@ -11,21 +11,26 @@
                             <img class="post-image" v-for="imageUrl in post.ImageURLs" :key="imageUrl" :src="imageUrl" />
                         </p>
                         <p class="card-text text-muted">
-                            <small>{{post.CreatedAt}}</small>
+                            <span>{{post.CreatedAt}}</span>
+                            <span class="float-right" v-if="post.Link">
+                                <b>
+                                    <a target="_blank" :href="post.Link">view details <v-icon name="chevron-right" scale="0.8"></v-icon></a>
+                                </b>
+                            </span>
                         </p>
                     </b-card>
                 </b-col>
                 <b-col v-if="loading" md="12">
                     <b-card border-variant="light" header-bg-variant="light">
                         <p class="card-text text-muted">
-                            <b>loading...</b>
+                            <b><v-icon name="spinner" spin="true"></v-icon> loading...</b>
                         </p>
                     </b-card>
                 </b-col>
                 <b-col class="load-more-card" v-if="hasMore && !loading" md="12">
                     <b-card @click="updatePosts" border-variant="light" header-bg-variant="light">
                         <p class="card-text">
-                            <b>load more</b>
+                            <b><v-icon name="chevron-down"></v-icon> load more</b>
                         </p>
                     </b-card>
                 </b-col>

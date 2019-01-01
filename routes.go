@@ -71,6 +71,7 @@ func routePosts(c echo.Context) (err error) {
 type AddPostForm struct {
 	Content  string `json:"content"`
 	ImageURL string `json:"imageUrl"`
+	Link     string `json:"link"`
 }
 
 func routeAddPost(c echo.Context) (err error) {
@@ -78,7 +79,7 @@ func routeAddPost(c echo.Context) (err error) {
 	if err = c.Bind(form); err != nil {
 		return
 	}
-	if err = DB.Create(&Post{Content: form.Content, ImageURL: form.ImageURL}).Error; err != nil {
+	if err = DB.Create(&Post{Content: form.Content, ImageURL: form.ImageURL, Link: form.Link}).Error; err != nil {
 		return
 	}
 	return c.String(http.StatusOK, "OK")
