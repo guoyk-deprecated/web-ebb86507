@@ -6,9 +6,9 @@
             <b-row>
                 <b-col class="mb-3" v-for="post in posts" :key="post.ID" :md="post.Col">
                     <b-card border-variant="light" header-bg-variant="light" :img-src="post.ImageURL">
-                        <p v-if="post.Content.length > 0">{{post.Content}}</p>
+                        <p class="card-text" v-if="post.Content.length > 0">{{post.Content}}</p>
                         <p class="card-text text-muted">
-                            <b>{{post.CreatedAt}}</b>
+                            <small>{{post.CreatedAt}}</small>
                         </p>
                     </b-card>
                 </b-col>

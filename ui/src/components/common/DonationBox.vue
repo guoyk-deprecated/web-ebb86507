@@ -16,7 +16,7 @@
             <p class="text-center mt-3">
                 <ch-bmcbutton></ch-bmcbutton>
             </p>
-            <p class="mb-1">
+            <p class="mb-2">
                 <b><v-icon name="trophy"></v-icon> Thanks</b>
             </p>
             <b-row v-if="sponsors.length > 0">
