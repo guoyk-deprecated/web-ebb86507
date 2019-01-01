@@ -1,29 +1,34 @@
 <template>
-    <b-card border-variant="info">
-        <b class="card-title"><v-icon name="money-bill" scale="1.4"></v-icon> Donation</b>
-        <hr/>
+    <b-card border-variant="light" header-bg-variant="light">
+        <template slot="header">
+            <b><v-icon name="money-bill" scale="1.4"></v-icon> Donation</b>
+        </template>
         <div class="card-text">
             <p class="mb-1">
-                <b>RMB</b> <small class="text-muted"> (wechat)</small>
+                <b><v-icon name="yen-sign"></v-icon> RMB</b> <small class="text-muted"> (wechat)</small>
             </p>
             <p class="text-center">
                 <img class="rounded" src="/img/wx-donate-slice.jpg" style="width: 160px"/>
             </p>
             <p class="mb-1">
-                <b>JPY / USD</b> <small class="text-muted"> (buymeacoffee.com)</small>
+                <b><v-icon name="dollar-sign"></v-icon> USD</b> <small class="text-muted"> (buymeacoffee.com)</small>
             </p>
             <p class="text-center mt-3">
                 <ch-bmcbutton></ch-bmcbutton>
             </p>
             <p class="mb-1">
-                <b>Thanks</b>
+                <b><v-icon name="trophy"></v-icon> Thanks</b>
             </p>
-            <b-row>
-                <b-col md="6" v-if="sponsors.length > 0" v-for="sponsor in sponsors" :key="sponsor.ID" class="text-info mb-0">
-                    <b><v-icon name="award" scale="1"></v-icon>&nbsp;{{ sponsor.Name }}&nbsp;</b>
+            <b-row v-if="sponsors.length > 0">
+                <b-col lg="6" v-for="sponsor in sponsors" :key="sponsor.ID" class="text-primary mb-0">
+                    <v-icon name="award" scale="1"></v-icon>&nbsp;{{ sponsor.Name }}&nbsp;
                 </b-col>
-                <b-col v-if="sponsors.length == 0 && loaded" class="mt-1 mb-1 text-center text-muted">no supporters yet</b-col>
-                <b-col v-if="sponsors.length == 0 && !loaded" class="mt-1 mb-1 text-center text-muted">loading...</b-col>
+            </b-row>
+            <b-row v-if="sponsors.length == 0 && !loading">
+                <b-col class="mt-1 mb-1 text-center text-muted">no supporters yet</b-col>
+            </b-row>
+            <b-row v-if="sponsors.length == 0 && loading">
+                <b-col class="mt-1 mb-1 text-center text-muted">loading...</b-col>
             </b-row>
         </div>
     </b-card>
@@ -35,7 +40,7 @@
     export default {
         data () {
             return {
-                loaded: false,
+                loading: false,
                 sponsors: []
             }
         },
@@ -47,9 +52,10 @@
         },
         methods: {
             updateSponsors () {
+                this.loading = true
                 this.$http.get("/api/sponsors").then(res=> {
                     this.sponsors = res.body
-                    this.loaded = true
+                    this.loading = false
                 })
             }
         }
@@ -57,4 +63,7 @@
 </script>
 
 <style>
+.card-header {
+    border-bottom: none;
+}
 </style>

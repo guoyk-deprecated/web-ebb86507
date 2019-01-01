@@ -3,7 +3,7 @@
     <ch-intro></ch-intro>
     <b-row>
         <b-col md="8" class="mt-2">
-            <b-card class="border-secondary">
+            <b-card border-variant="light" header-bg-variant="light">
                 <b class="card-title">
                     <v-icon name="comments" scale="1.4"></v-icon> Lorem Ipsum
                 </b>

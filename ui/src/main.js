@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App.vue'
 
-import './vendor/bootswatch/litera.css'
+import './vendor/bootswatch/flatly.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
