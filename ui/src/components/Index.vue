@@ -4,9 +4,12 @@
     <b-row>
         <b-col md="8" class="mt-2">
             <b-row>
-                <b-col class="mb-3" v-for="post in posts" :key="post.ID" :md="post.Col">
-                    <b-card border-variant="light" header-bg-variant="light" :img-src="post.ImageURL">
-                        <p class="card-text" v-if="post.Content.length > 0">{{post.Content}}</p>
+                <b-col class="mb-3" v-for="post in posts" :key="post.ID" md="12">
+                    <b-card border-variant="light" header-bg-variant="light">
+                        <p class="card-text" v-if="post.Content">{{post.Content}}</p>
+                        <p class="card-text" v-if="post.ImageURL" v-viewer>
+                            <img class="post-image" v-for="imageUrl in post.ImageURLs" :key="imageUrl" :src="imageUrl" />
+                        </p>
                         <p class="card-text text-muted">
                             <small>{{post.CreatedAt}}</small>
                         </p>
@@ -72,8 +75,8 @@ export default {
             this.$http.get("/api/posts", { params }).then((res) => {
                 let newPosts = res.body
                 newPosts.forEach(post => {
+                    post.ImageURLs = post.ImageURL.split('|||')
                     post.CreatedAt = moment(post.CreatedAt).local().calendar()
-                    post.Col = post.ImageURL ? 6 : 12
                 })
                 this.posts = this.posts.concat(newPosts)
                 this.hasMore = newPosts.length == 50
@@ -89,5 +92,9 @@ export default {
 <style>
 .load-more-card {
     cursor: pointer;
+}
+img.post-image {
+    height: 160px;
+    margin-right: 0.8rem;
 }
 </style>

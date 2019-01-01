@@ -27,6 +27,11 @@ Vue.use(VueAnalytics, {
   id: 'UA-131537778-1'
 })
 
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer'
+
+Vue.use(Viewer)
+
 import router from './router'
 
 new Vue({
