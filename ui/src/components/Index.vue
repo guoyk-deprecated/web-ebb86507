@@ -6,16 +6,16 @@
             <b-row>
                 <b-col class="mb-3" v-for="post in posts" :key="post.ID" md="12">
                     <b-card border-variant="light" header-bg-variant="light">
-                        <p class="card-text" v-if="post.Content">{{post.Content}}</p>
+                        <p class="card-text text-primary" v-if="post.Content">{{post.Content}}</p>
                         <p class="card-text" v-if="post.ImageURL" v-viewer>
                             <img class="post-image" v-for="imageUrl in post.ImageURLs" :key="imageUrl" :src="imageUrl" />
                         </p>
                         <p class="card-text text-muted">
-                            <span>{{post.CreatedAt}}</span>
+                            <span><small>{{post.CreatedAt}}</small></span>
                             <span class="float-right" v-if="post.Link">
-                                <b>
+                                <small>
                                     <a target="_blank" :href="post.Link">view details <v-icon name="chevron-right" scale="0.8"></v-icon></a>
-                                </b>
+                                </small>
                             </span>
                         </p>
                     </b-card>
@@ -99,7 +99,7 @@ export default {
     cursor: pointer;
 }
 img.post-image {
-    height: 160px;
+    height: 80px;
     margin-right: 0.8rem;
     margin-bottom: 0.6rem;
 }
