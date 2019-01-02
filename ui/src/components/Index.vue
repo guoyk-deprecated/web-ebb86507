@@ -101,5 +101,6 @@ export default {
 img.post-image {
     height: 160px;
     margin-right: 0.8rem;
+    margin-bottom: 0.6rem;
 }
 </style>
