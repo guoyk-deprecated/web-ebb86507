@@ -6,7 +6,9 @@
             <b-row>
                 <b-col class="mb-3" v-for="post in posts" :key="post.ID" md="12">
                     <b-card border-variant="light" header-bg-variant="light">
-                        <p class="card-text text-primary" v-if="post.Content">{{post.Content}}</p>
+                        <p class="card-text text-primary post-content" v-if="post.Content">
+                            {{post.Content}}
+                        </p>
                         <p class="card-text" v-if="post.ImageURL" v-viewer>
                             <img class="post-image" v-for="imageUrl in post.ImageURLs" :key="imageUrl" :src="imageUrl" />
                         </p>
@@ -22,14 +24,14 @@
                 </b-col>
                 <b-col v-if="loading" md="12">
                     <b-card border-variant="light" header-bg-variant="light">
-                        <p class="card-text text-muted">
+                        <p class="card-text text-muted text-center">
                             <b><v-icon name="spinner" spin="true"></v-icon> loading...</b>
                         </p>
                     </b-card>
                 </b-col>
                 <b-col class="load-more-card" v-if="hasMore && !loading" md="12">
                     <b-card @click="updatePosts" border-variant="light" header-bg-variant="light">
-                        <p class="card-text">
+                        <p class="card-text text-center">
                             <b><v-icon name="chevron-down"></v-icon> load more</b>
                         </p>
                     </b-card>
@@ -95,12 +97,15 @@ export default {
 </script>
 
 <style>
-.load-more-card {
+div.load-more-card {
     cursor: pointer;
 }
 img.post-image {
     height: 80px;
     margin-right: 0.8rem;
     margin-bottom: 0.6rem;
+}
+p.post-content {
+    font-size: 1rem;
 }
 </style>
