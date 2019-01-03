@@ -10,7 +10,7 @@
                             {{post.Content}}
                         </p>
                         <p class="card-text" v-if="post.ImageURL" v-viewer>
-                            <img class="post-image" v-for="imageUrl in post.ImageURLs" :key="imageUrl" :src="imageUrl" />
+                            <img class="post-image rounded" v-for="imageUrl in post.ImageURLs" :key="imageUrl" :src="imageUrl" />
                         </p>
                         <p class="card-text text-muted">
                             <span><small>{{post.CreatedAt}}</small></span>
@@ -25,7 +25,7 @@
                 <b-col v-if="loading" md="12">
                     <b-card border-variant="light" header-bg-variant="light">
                         <p class="card-text text-muted text-center">
-                            <b><v-icon name="spinner" spin="true"></v-icon> loading...</b>
+                            <b><v-icon name="spinner" spin></v-icon> loading...</b>
                         </p>
                     </b-card>
                 </b-col>
