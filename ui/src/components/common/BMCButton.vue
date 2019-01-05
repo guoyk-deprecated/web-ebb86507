@@ -1,7 +1,7 @@
 <template>
     <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/virtcanhead">
         <img src="../../assets/bmc-btn-logo.svg" alt="bmc" />
-        <span style="margin-left:5px">Donation <b><v-icon name="angle-right"></v-icon></b></span>
+        <span style="margin-left:5px">donation <b><v-icon name="chevron-right"></v-icon></b></span>
     </a>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
     <b-card class="shadow-sm" border-variant="light" header-bg-variant="light">
         <template slot="header">
-            <b><v-icon name="money-bill-wave" scale="1.6"></v-icon> Donation</b>
+            <b><v-icon name="money-bill-wave" scale="1.6"></v-icon> donation</b>
         </template>
         <div class="card-text">
             <p class="mb-1">

@@ -7,7 +7,7 @@
                 <b-col class="mb-3" v-for="post in posts" :key="post.ID" md="12">
                     <b-card class="shadow-sm" border-variant="light" header-bg-variant="light">
                         <p class="text-primary post-content" v-if="post.Content">
-                            <v-icon class="text-muted" name="quote-left" scale="1.1"></v-icon>&nbsp;&nbsp;{{post.Content}}
+                            <v-icon class="text-muted" name="quote-left"></v-icon>&nbsp;&nbsp;{{post.Content}}
                         </p>
                         <p v-if="post.ImageURL" v-viewer>
                             <img class="post-image rounded" v-for="imageUrl in post.ImageURLs" :key="imageUrl" :src="imageUrl" />
@@ -16,6 +16,7 @@
                             <span><small>{{post.CreatedAt}}</small></span>
                         </p>
                         <a class="link-button" v-if="post.Link" :href="post.Link" target="_blank">
+                            <v-icon name="link" scale="1.2"></v-icon>&nbsp;&nbsp;
                             <v-icon name="chevron-right" scale="1.2"></v-icon>
                         </a>
                     </b-card>
@@ -107,6 +108,7 @@ p.post-content {
     font-size: 1rem;
 }
 a.link-button {
+    text-decoration: none;
     color: white;
     background-color: #18BC9C;
     position: absolute;
@@ -116,7 +118,7 @@ a.link-button {
     height: 36px;
     cursor: pointer;
     text-align: center;
-    padding-left: 40px;
+    padding-left: 8px;
     padding-top: 6px;
     border-top-left-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
