@@ -15,7 +15,7 @@ type Sponsor struct {
 type Post struct {
 	gorm.Model
 
-	ImageURL string `gorm:"NOT NULL"`
-	Content  string `gorm:"NOT NULL"`
-	Link     string `gorm:"NOT NULL"`
+	ImageURL string `gorm:"Type:TEXT;NOT NULL"`
+	Content  string `gorm:"Type:TEXT;NOT NULL"`
+	Link     string `gorm:"Type:TEXT;NOT NULL"`
 }
