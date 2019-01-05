@@ -20,7 +20,7 @@
                 <b><v-icon name="trophy"></v-icon> Thanks</b>
             </p>
             <b-row v-if="sponsors.length > 0">
-                <b-col lg="6" v-for="sponsor in sponsors" :key="sponsor.ID" class="text-primary mb-0">
+                <b-col mb="12" v-for="sponsor in sponsors" :key="sponsor.ID" class="text-primary mb-0">
                     <v-icon name="award" scale="1"></v-icon>&nbsp;{{ sponsor.Name }}&nbsp;
                 </b-col>
             </b-row>
