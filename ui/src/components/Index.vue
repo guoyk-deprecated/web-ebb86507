@@ -117,10 +117,14 @@ a.link-button {
     cursor: pointer;
     text-align: center;
     padding-left: 40px;
-    padding-top: 7px;
+    padding-top: 6px;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
 }
 a.link-button:hover {
     color: white;
-    background-color: #149A80;
+    background-color: #1acba8;
+    -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 </style>
