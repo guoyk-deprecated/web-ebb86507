@@ -16,7 +16,7 @@
                             <span><small>{{post.CreatedAt}}</small></span>
                         </p>
                         <a class="link-button" v-if="post.Link" :href="post.Link" target="_blank">
-                            <v-icon name="chevron-right" scale="1.8"></v-icon></a>
+                            <v-icon name="chevron-right" scale="1.2"></v-icon></a>
                         </a>
                     </b-card>
                 </b-col>
@@ -110,15 +110,14 @@ a.link-button {
     color: white;
     background-color: #18BC9C;
     position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 80px;
-    height: 60px;
-    border-bottom-right-radius: 0.25rem;
+    right: -2px;
+    bottom: 14px;
+    width: 72px;
+    height: 36px;
     cursor: pointer;
     text-align: center;
-    padding-left: 30px;
-    padding-top: 16px;
+    padding-left: 40px;
+    padding-top: 7px;
 }
 a.link-button:hover {
     color: white;
