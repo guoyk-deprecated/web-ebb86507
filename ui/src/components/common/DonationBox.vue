@@ -1,5 +1,5 @@
 <template>
-    <b-card border-variant="light" header-bg-variant="light">
+    <b-card class="shadow-sm" border-variant="light" header-bg-variant="light">
         <template slot="header">
             <b><v-icon name="money-bill" scale="1.4"></v-icon> Donation</b>
         </template>

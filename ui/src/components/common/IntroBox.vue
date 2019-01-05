@@ -1,5 +1,5 @@
 <template>
-    <b-jumbotron class="main-jumbotron mt-4">
+    <b-jumbotron class="main-jumbotron shadow-sm mt-4">
         <b-row>
             <b-col md="4" class="pt-3 text-right">
                 <img class="rounded-circle border border-secondary" src="../../assets/avatar-round-2.png" style="width: 160px; height: 160px;">

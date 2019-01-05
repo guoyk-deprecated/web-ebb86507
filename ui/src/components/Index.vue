@@ -5,7 +5,7 @@
         <b-col md="8" class="mt-2">
             <b-row>
                 <b-col class="mb-3" v-for="post in posts" :key="post.ID" md="12">
-                    <b-card border-variant="light" header-bg-variant="light">
+                    <b-card class="shadow-sm" border-variant="light" header-bg-variant="light">
                         <p class="card-text text-primary post-content" v-if="post.Content">
                             {{post.Content}}
                         </p>
