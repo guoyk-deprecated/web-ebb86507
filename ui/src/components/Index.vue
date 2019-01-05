@@ -6,32 +6,30 @@
             <b-row>
                 <b-col class="mb-3" v-for="post in posts" :key="post.ID" md="12">
                     <b-card class="shadow-sm" border-variant="light" header-bg-variant="light">
-                        <p class="card-text text-primary post-content" v-if="post.Content">
+                        <p class="text-primary post-content" v-if="post.Content">
                             {{post.Content}}
                         </p>
-                        <p class="card-text" v-if="post.ImageURL" v-viewer>
+                        <p v-if="post.ImageURL" v-viewer>
                             <img class="post-image rounded" v-for="imageUrl in post.ImageURLs" :key="imageUrl" :src="imageUrl" />
                         </p>
-                        <p class="card-text text-muted">
+                        <p class="mb-0 text-muted">
                             <span><small>{{post.CreatedAt}}</small></span>
-                            <span class="float-right" v-if="post.Link">
-                                <small>
-                                    <a target="_blank" :href="post.Link">view details <v-icon name="chevron-right" scale="0.8"></v-icon></a>
-                                </small>
-                            </span>
                         </p>
+                        <a class="link-button" v-if="post.Link" :href="post.Link" target="_blank">
+                            <v-icon name="chevron-right" scale="1.8"></v-icon></a>
+                        </a>
                     </b-card>
                 </b-col>
                 <b-col v-if="loading" md="12">
                     <b-card border-variant="light" header-bg-variant="light">
-                        <p class="card-text text-muted text-center">
+                        <p class="text-muted text-center">
                             <b><v-icon name="spinner" spin></v-icon> loading...</b>
                         </p>
                     </b-card>
                 </b-col>
                 <b-col class="load-more-card" v-if="hasMore && !loading" md="12">
                     <b-card @click="updatePosts" border-variant="light" header-bg-variant="light">
-                        <p class="card-text text-center">
+                        <p class="text-center">
                             <b><v-icon name="chevron-down"></v-icon> load more</b>
                         </p>
                     </b-card>
@@ -107,5 +105,23 @@ img.post-image {
 }
 p.post-content {
     font-size: 1rem;
+}
+a.link-button {
+    color: white;
+    background-color: #18BC9C;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 80px;
+    height: 60px;
+    border-bottom-right-radius: 0.25rem;
+    cursor: pointer;
+    text-align: center;
+    padding-left: 30px;
+    padding-top: 16px;
+}
+a.link-button:hover {
+    color: white;
+    background-color: #149A80;
 }
 </style>
