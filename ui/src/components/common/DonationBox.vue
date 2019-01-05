@@ -1,7 +1,7 @@
 <template>
     <b-card class="shadow-sm" border-variant="light" header-bg-variant="light">
         <template slot="header">
-            <b><v-icon name="money-bill" scale="1.4"></v-icon> Donation</b>
+            <b><v-icon name="money-bill-wave" scale="1.6"></v-icon> Donation</b>
         </template>
         <div class="card-text">
             <p class="mb-1">
@@ -21,7 +21,7 @@
             </p>
             <b-row v-if="sponsors.length > 0">
                 <b-col mb="12" v-for="sponsor in sponsors" :key="sponsor.ID" class="text-primary mb-0">
-                    <v-icon name="award" scale="1"></v-icon>&nbsp;{{ sponsor.Name }}&nbsp;
+                    <v-icon name="award"></v-icon> {{ sponsor.Name }}
                 </b-col>
             </b-row>
             <b-row v-if="sponsors.length == 0 && !loading">
