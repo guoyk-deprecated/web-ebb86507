@@ -7,7 +7,7 @@
                 <b-col class="mb-3" v-for="post in posts" :key="post.ID" md="12">
                     <b-card class="shadow-sm" border-variant="light" header-bg-variant="light">
                         <p class="text-primary post-content" v-if="post.Content">
-                            <v-icon class="text-muted" name="quote-left"></v-icon>&nbsp;&nbsp;{{post.Content}}
+                            <v-icon class="text-muted" name="quote-left"></v-icon>&nbsp;&nbsp;<span v-html="post.Content"></span>
                         </p>
                         <p v-if="post.ImageURL" v-viewer>
                             <img class="post-image rounded" v-for="imageUrl in post.ImageURLs" :key="imageUrl" :src="imageUrl" />
