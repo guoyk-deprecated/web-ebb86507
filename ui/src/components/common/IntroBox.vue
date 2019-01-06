@@ -7,7 +7,7 @@
             <b-col md="8" class="pt-4">
                 <b-row>
                     <b-col>
-                        <h2><b class="text-white">罐头人Canhead (缶ヘッド)</b></h2>
+                        <h2><b class="text-white">{{ $t("intro.name")  }}</b></h2>
                     </b-col>
                 </b-row>
                 <b-row class="mt-2 mb-2">

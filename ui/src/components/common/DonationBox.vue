@@ -1,7 +1,7 @@
 <template>
     <b-card class="shadow-sm" border-variant="light" header-bg-variant="light">
         <template slot="header">
-            <b><v-icon name="money-bill-wave" scale="1.2"></v-icon>&nbsp;&nbsp;donation</b>
+            <b><v-icon name="money-bill-wave" scale="1.2"></v-icon>&nbsp;&nbsp;{{ $t("donation.title") }}</b>
         </template>
         <div class="card-text">
             <p class="mb-1">

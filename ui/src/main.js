@@ -32,11 +32,14 @@ import Viewer from 'v-viewer'
 
 Vue.use(Viewer)
 
+import i18n from './i18n'
+
 import router from './router'
 
 new Vue({
   el: '#app',
   router,
+  i18n,
   components: {App},
   template: '<App/>'
 }).$mount('#app')
