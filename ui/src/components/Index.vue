@@ -23,14 +23,14 @@
                 </b-col>
                 <b-col v-if="loading" md="12">
                     <b-card border-variant="light" header-bg-variant="light">
-                        <p class="text-muted text-center">
+                        <p class="text-muted text-center mb-0">
                             <b><v-icon name="spinner" spin></v-icon> loading...</b>
                         </p>
                     </b-card>
                 </b-col>
-                <b-col class="load-more-card" v-if="hasMore && !loading" md="12">
-                    <b-card @click="updatePosts" border-variant="light" header-bg-variant="light">
-                        <p class="text-center">
+                <b-col v-if="hasMore && !loading" md="12">
+                    <b-card @click="updatePosts" class="load-more-card" border-variant="light" header-bg-variant="light">
+                        <p class="text-center mb-0">
                             <b><v-icon name="chevron-down"></v-icon> load more</b>
                         </p>
                     </b-card>
