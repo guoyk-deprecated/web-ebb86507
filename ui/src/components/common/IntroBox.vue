@@ -12,7 +12,7 @@
                 </b-row>
                 <b-row class="mt-2 mb-2">
                     <b-col>
-                        <h4><span class="text-secondary"><v-icon name="envelope" scale="1.4"></v-icon>&nbsp; {{ email }}</span></h4>
+                        <h4><a :href="emailLink" class="text-secondary text-decoration-none"><v-icon name="envelope" scale="1.4"></v-icon>&nbsp; {{ email }}</a></h4>
                     </b-col>
                 </b-row>
                 <b-row class="mt-2 mb-2">
@@ -32,6 +32,7 @@ export default {
     data () {
         return {
             email: 'hi@canhead.xyz',
+            emailLink: 'mailto:hi@canhead.xyz',
             links: [
                 {icon: "lock", url: "/123EDB85.asc.txt"},
                 {icon: "play-circle", url: "https://space.bilibili.com/19523038"},
