@@ -13,8 +13,6 @@ if (allLocales.indexOf(locale) == -1) {
     locale = 'en'
 }
 
-console.log('locale:', locale)
-
 const momentLocalesMap = { en: 'en-gb', zh: 'zh-cn', ja: 'ja' }
 
 moment.locale(momentLocalesMap[locale])
