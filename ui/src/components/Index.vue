@@ -10,8 +10,13 @@
                         <p v-if="post.ImageURL" v-viewer>
                             <img class="post-image rounded" v-for="imageUrl in post.ImageURLs" :key="imageUrl" :src="imageUrl" />
                         </p>
-                        <p class="mb-0 text-muted">
-                            <span><small>{{post.CreatedAt}}</small></span>
+                        <p class="mb-0">
+                            <span><small>{{post.CreatedAt}}</small></span>&nbsp;&nbsp;
+                            <span @click="onVoteClicked(post)" class="vote-span">
+                                <span v-if="!post.Voted"><v-icon class="text-danger" name="regular/heart"></v-icon> </span>
+                                <span v-if="post.Voted"><v-icon class="text-danger" name="heart" scale="1.1"></v-icon> </span>
+                                <span> {{post.VotesCount}}</span>
+                            </span>
                         </p>
                         <a class="link-button" v-if="post.Link" :href="post.Link" target="_blank">
                             <v-icon name="link" scale="1.2"></v-icon>&nbsp;&nbsp;
@@ -88,6 +93,15 @@ export default {
             }, () => {
                 this.loading = false
             })
+        },
+        onVoteClicked (post) {
+            if (post.Voted) {
+                return
+            }
+            post.Voted = true
+            this.$http.post("/api/posts/" + post.ID + "/vote").then((res) => {
+               post.VotesCount = res.body.VotesCount
+            })
         }
     }
 }
@@ -126,5 +140,8 @@ a.link-button:hover {
     background-color: #1acba8;
     -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+span.vote-span {
+    cursor: pointer;
 }
 </style>

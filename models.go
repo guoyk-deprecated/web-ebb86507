@@ -26,6 +26,6 @@ type Post struct {
 type Vote struct {
 	gorm.Model
 
-	PostID uint
-	GA     string
+	PostID uint   `gorm:"INDEX"`
+	GA     string `gorm:"INDEX"`
 }

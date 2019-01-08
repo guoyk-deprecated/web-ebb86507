@@ -1,7 +1,9 @@
 package main
 
 import (
+	"errors"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/jinzhu/copier"
@@ -11,6 +13,7 @@ import (
 func routes(e *echo.Echo) {
 	e.GET("/api/sponsors", routeSponsors)
 	e.GET("/api/posts", routePosts)
+	e.POST("/api/posts/:id/vote", routePostsVote)
 	e.POST("/api/sponsors/add", routeAddSponsor, adminTokenValidator())
 	e.POST("/api/posts/add", routeAddPost, adminTokenValidator())
 }
@@ -97,6 +100,28 @@ func routePosts(c echo.Context) (err error) {
 		}
 	}
 	return c.JSON(http.StatusOK, ret)
+}
+
+func routePostsVote(c echo.Context) (err error) {
+	var id int
+	if id, err = strconv.Atoi(c.Param("id")); err != nil {
+		return
+	}
+	var ga string
+	var ok bool
+	if ga, ok = ExtractGA(c); !ok {
+		err = errors.New("GA client id not found")
+		return
+	}
+	var l int
+	DB.Model(&Vote{}).Where(map[string]interface{}{"ga": ga, "post_id": id}).Count(&l)
+	if l > 0 {
+		err = errors.New("already voted")
+		return
+	}
+	DB.Create(&Vote{PostID: uint(id), GA: ga})
+	DB.Model(&Vote{}).Where(map[string]interface{}{"post_id": id}).Count(&l)
+	return c.JSON(http.StatusOK, map[string]interface{}{"VotesCount": l})
 }
 
 // AddPostForm add sponsor form
