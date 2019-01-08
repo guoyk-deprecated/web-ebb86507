@@ -2,7 +2,9 @@ package main
 
 import (
 	"net/http"
+	"time"
 
+	"github.com/jinzhu/copier"
 	"github.com/labstack/echo"
 )
 
@@ -28,12 +30,20 @@ func adminTokenValidator() echo.MiddlewareFunc {
 	}
 }
 
+// SponsorViewModel sponsor view model
+type SponsorViewModel struct {
+	ID   uint
+	Name string
+}
+
 func routeSponsors(c echo.Context) (err error) {
 	var sponsors []Sponsor
+	var ret []*SponsorViewModel
 	if err = DB.Order("id DESC").Limit(500).Find(&sponsors).Error; err != nil {
 		return
 	}
-	return c.JSON(http.StatusOK, sponsors)
+	copier.Copy(&ret, &sponsors)
+	return c.JSON(http.StatusOK, ret)
 }
 
 // AddSponsorForm add sponsor form
@@ -55,8 +65,18 @@ func routeAddSponsor(c echo.Context) (err error) {
 	return c.String(http.StatusOK, "OK")
 }
 
+// PostViewModel view model for post
+type PostViewModel struct {
+	ID        uint
+	CreatedAt time.Time
+	ImageURL  string
+	Content   string
+	Link      string
+}
+
 func routePosts(c echo.Context) (err error) {
 	var posts []Post
+	var ret []*PostViewModel
 	var db = DB
 	if len(c.QueryParam("lastId")) > 0 {
 		db = db.Where("id < ?", c.QueryParam("lastId"))
@@ -64,7 +84,8 @@ func routePosts(c echo.Context) (err error) {
 	if err = db.Order("id DESC").Limit(50).Find(&posts).Error; err != nil {
 		return
 	}
-	return c.JSON(http.StatusOK, posts)
+	copier.Copy(&ret, &posts)
+	return c.JSON(http.StatusOK, ret)
 }
 
 // AddPostForm add sponsor form

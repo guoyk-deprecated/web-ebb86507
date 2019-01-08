@@ -18,6 +18,14 @@
   version = "v1.4.1"
 
 [[projects]]
+  branch = "master"
+  digest = "1:5c3444689562053b027ef3b96372e306adbe0d7d109b6cdd48d01eb80f8bab14"
+  name = "github.com/jinzhu/copier"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "7e38e58719c33e0d44d585c4ab477a30f8cb82dd"
+
+[[projects]]
   digest = "1:420ec120a74b22e8a967f2a2928d89503e373848c0d4447d16ddbbbef9a9965c"
   name = "github.com/jinzhu/gorm"
   packages = [
@@ -131,6 +139,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/jinzhu/copier",
     "github.com/jinzhu/gorm",
     "github.com/jinzhu/gorm/dialects/mysql",
     "github.com/labstack/echo",
