@@ -72,6 +72,9 @@ type PostViewModel struct {
 	ImageURL  string
 	Content   string
 	Link      string
+
+	VotesCount uint
+	Voted      bool
 }
 
 func routePosts(c echo.Context) (err error) {
@@ -85,6 +88,14 @@ func routePosts(c echo.Context) (err error) {
 		return
 	}
 	copier.Copy(&ret, &posts)
+	for _, v := range ret {
+		db.Model(&Vote{}).Where(map[string]interface{}{"post_id": v.ID}).Count(&v.VotesCount)
+		if ga, ok := ExtractGA(c); ok {
+			var c uint
+			db.Model(&Vote{}).Where(map[string]interface{}{"post_id": v.ID, "ga": ga}).Count(&c)
+			v.Voted = c > 0
+		}
+	}
 	return c.JSON(http.StatusOK, ret)
 }
 

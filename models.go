@@ -18,4 +18,14 @@ type Post struct {
 	ImageURL string `gorm:"Type:TEXT;NOT NULL"`
 	Content  string `gorm:"Type:TEXT;NOT NULL"`
 	Link     string `gorm:"Type:TEXT;NOT NULL"`
+
+	Votes []Vote
+}
+
+// Vote vote
+type Vote struct {
+	gorm.Model
+
+	PostID uint
+	GA     string
 }
