@@ -41,7 +41,7 @@ type SponsorViewModel struct {
 
 func routeSponsors(c echo.Context) (err error) {
 	var sponsors []Sponsor
-	var ret []*SponsorViewModel
+	ret := []*SponsorViewModel{}
 	if err = DB.Order("id DESC").Limit(500).Find(&sponsors).Error; err != nil {
 		return
 	}
@@ -82,7 +82,7 @@ type PostViewModel struct {
 
 func routePosts(c echo.Context) (err error) {
 	var posts []Post
-	var ret []*PostViewModel
+	ret := []*PostViewModel{}
 	var db = DB
 	if len(c.QueryParam("lastId")) > 0 {
 		db = db.Where("id < ?", c.QueryParam("lastId"))
