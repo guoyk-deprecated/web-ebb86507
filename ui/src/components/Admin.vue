@@ -64,7 +64,7 @@
     </b-row>
     <b-row>
         <b-col class="text-center pt-4 pb-4">
-            <small class="text-muted">2018 (c) canhead.xyz</small>
+            <small class="text-muted">2019 (c) canhead.xyz</small>
         </b-col>
     </b-row>
 </b-container>
