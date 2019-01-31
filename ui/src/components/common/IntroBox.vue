@@ -50,7 +50,7 @@ export default {
 <style>
 div.main-jumbotron {
     background-color: #333333;
-    background-image: url("../../assets/jumbotron-bg.jpg");
+    background-image: url("../../assets/avatar.png");
 }
 
 a.intro-link {
