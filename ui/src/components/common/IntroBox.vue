@@ -35,7 +35,7 @@ export default {
             emailLink: 'mailto:hi@canhead.xyz',
             links: [
                 {icon: "lock", url: "/123EDB85.asc.txt"},
-                {icon: "play-circle", url: "https://space.bilibili.com/19523038"},
+                {icon: "brands/bilibili", url: "https://space.bilibili.com/19523038"},
                 {icon: "brands/weibo", url: "https://weibo.com/canhead"},
                 {icon: "brands/twitter", url: "https://twitter.com/virtcanhead"},
                 {icon: "brands/instagram", url: "https://www.instagram.com/virtcanhead/"},
