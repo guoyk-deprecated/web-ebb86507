@@ -17,7 +17,7 @@
                 <ch-bmcbutton></ch-bmcbutton>
             </p>
             <p class="mb-2">
-                <b><v-icon name="trophy"></v-icon> Thanks</b>
+                <b><v-icon name="trophy"></v-icon> {{ $("donation.thanks") }} </b>
             </p>
             <b-row v-if="sponsors.length > 0">
                 <b-col mb="12" v-for="sponsor in sponsors" :key="sponsor.ID" class="text-primary mb-0">

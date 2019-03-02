@@ -24,7 +24,8 @@ const messages = {
         },
         donation: {
             title: 'donation',
-            button: 'donation'
+            button: 'donation',
+            thanks: 'Supporters'
         }
     },
     zh: {
@@ -33,7 +34,8 @@ const messages = {
         },
         donation: {
             title: '赞助',
-            button: '赞助'
+            button: '赞助',
+            thanks: '支持者'
         }
     },
     ja: {
@@ -42,7 +44,8 @@ const messages = {
         },
         donation: {
             title: '寄贈',
-            button: '寄贈'
+            button: '寄贈',
+            thanks: 'サポーター'
         }
     }
 }
