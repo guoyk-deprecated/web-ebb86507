@@ -10,22 +10,18 @@
                         <p v-if="post.ImageURL" v-viewer>
                             <img class="post-image rounded" v-for="imageUrl in post.ImageURLs" :key="imageUrl" :src="imageUrl" />
                         </p>
-                        <p class="mb-0">
+                        <p class="mb-0 post-content">
                             <span class="text-muted">{{post.CreatedAt}}</span>
+                            <span class="vote-area" @click="onVoteClicked(post)">
+                                <span class="text-danger" v-if="!post.Voted">
+                                    <v-icon scale="1.1" name="regular/heart"></v-icon>
+                                </span>
+                                <span class="text-danger" v-if="post.Voted">
+                                    <v-icon scale="1.1" name="heart"></v-icon>
+                                </span>
+                                <span>&nbsp;&nbsp;<span :class="post.Voted ? 'text-danger' : ''">{{post.VotesCount}}</span></span>
+                            </span>
                         </p>
-                        <div @click="onVoteClicked(post)" class="vote-area">
-                            <div class="vote-heart" v-if="!post.Voted">
-                                <v-icon class="text-danger" name="regular/heart" scale="1.2"></v-icon>
-                            </div>
-                            <div class="vote-heart text-danger" v-if="post.Voted">
-                                <v-icon name="heart" scale="1.2"></v-icon>
-                            </div>
-                            <div class="vote-count-span">&nbsp;&nbsp;<span :class="post.Voted ? 'text-danger' : ''">{{post.VotesCount}}</span></div>
-                        </div>
-                        <a class="link-button" v-if="post.Link" :href="post.Link" target="_blank">
-                            <v-icon name="link" scale="1.2"></v-icon>&nbsp;&nbsp;
-                            <v-icon name="chevron-right" scale="1.2"></v-icon>
-                        </a>
                     </b-card>
                 </b-col>
                 <b-col v-if="loading" md="12">
@@ -123,47 +119,8 @@ img.post-image {
 p.post-content {
     font-size: 1rem;
 }
-a.link-button {
-    text-decoration: none;
-    color: white;
-    background-color: #18BC9C;
-    position: absolute;
-    right: -2px;
-    bottom: 14px;
-    width: 72px;
-    height: 36px;
+span.vote-area {
     cursor: pointer;
-    text-align: center;
-    padding-left: 8px;
-    padding-top: 6px;
-    border-top-left-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-}
-a.link-button:hover {
-    color: white;
-    background-color: #1acba8;
-    -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-}
-div.vote-area {
-    text-align: left;
-    cursor: pointer;
-    position: absolute;
-    right: 82px;
-    bottom: 16px;
-    width: 60px;
-    height: 32px;
-}
-div.vote-heart {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-}
-div.vote-count-span {
-    position: absolute;
-    left: 23px;
-    top: 5px;
-    width: 42px;
-    font-size: 1rem;
+    margin-left: 1rem;
 }
 </style>
