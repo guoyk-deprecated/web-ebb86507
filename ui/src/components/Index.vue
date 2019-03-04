@@ -19,7 +19,7 @@
                                 <span class="text-danger" v-if="post.Voted">
                                     <v-icon scale="1.1" name="heart"></v-icon>
                                 </span>
-                                <span>&nbsp;&nbsp;<span :class="post.Voted ? 'text-danger' : ''">{{post.VotesCount}}</span></span>
+                                <span class="vote-count"><span :class="post.Voted ? 'text-danger' : ''">{{post.VotesCount}}</span></span>
                             </span>
                         </p>
                     </b-card>
@@ -120,7 +120,13 @@ p.post-content {
     font-size: 1rem;
 }
 span.vote-area {
+    float: right;
     cursor: pointer;
     margin-left: 1rem;
+}
+span.vote-count {
+    display: inline-block;
+    margin-left: 0.4rem;
+    width: 3rem;
 }
 </style>
