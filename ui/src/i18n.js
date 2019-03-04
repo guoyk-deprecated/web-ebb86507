@@ -25,7 +25,8 @@ const messages = {
         donation: {
             title: 'donation',
             button: 'donation',
-            thanks: 'Supporters'
+            thanks: 'Supporters',
+            noSupporters: 'no supporters yet'
         }
     },
     zh: {
@@ -35,7 +36,8 @@ const messages = {
         donation: {
             title: '赞助',
             button: '赞助',
-            thanks: '支持者'
+            thanks: '支持者',
+            noSupporters: '还没有人'
         }
     },
     ja: {
@@ -45,7 +47,8 @@ const messages = {
         donation: {
             title: '寄贈',
             button: '寄贈',
-            thanks: 'サポーター'
+            thanks: 'サポーター',
+            noSupporters: 'まだサポーターはいません'
         }
     }
 }

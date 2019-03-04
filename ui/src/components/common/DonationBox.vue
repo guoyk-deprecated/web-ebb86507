@@ -20,12 +20,12 @@
                 <b><v-icon name="trophy"></v-icon> {{ $t("donation.thanks") }} </b>
             </p>
             <b-row v-if="sponsors.length > 0">
-                <b-col mb="12" v-for="sponsor in sponsors" :key="sponsor.ID" class="text-primary mb-0">
+                <b-col md="11" offset-md="1" v-for="sponsor in sponsors" :key="sponsor.ID" class="text-primary mb-0">
                     <v-icon name="award"></v-icon> {{ sponsor.Name }}
                 </b-col>
             </b-row>
             <b-row v-if="sponsors.length == 0 && !loading">
-                <b-col class="mt-1 mb-1 text-center text-muted">no supporters yet</b-col>
+                <b-col class="mt-1 mb-1 text-center text-muted">{{ $t("donation.noSupporters") }}</b-col>
             </b-row>
             <b-row v-if="sponsors.length == 0 && loading">
                 <b-col class="mt-1 mb-1 text-center text-muted">loading...</b-col>
